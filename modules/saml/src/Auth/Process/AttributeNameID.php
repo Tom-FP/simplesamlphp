@@ -42,10 +42,21 @@ class AttributeNameID extends BaseNameIDGenerator
         }
         $this->format = (string) $config['Format'];
 
+        $this->write_to_file(json_encode($config));
+
         if (!isset($config['identifyingAttribute'])) {
             throw new Error\Exception("AttributeNameID: Missing required option 'identifyingAttribute'.");
         }
         $this->identifyingAttribute = (string) $config['identifyingAttribute'];
+    }
+
+    private function write_to_file($txt): void {
+        // $file = fopen('C:\simplesamlphp\log\testing_log.log', "w") or die("Unable to open file!");
+        // fwrite($file, $txt);
+        // fclose($file);
+        date_default_timezone_set('Europe/Copenhagen');
+        $txt = date('m/d/Y h:i:s', time()) . ": " . $txt;
+        file_put_contents('C:\simplesamlphp\log\testing_log.log', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
     }
 
 
