@@ -229,3 +229,9 @@ typings/
 
 # dotenv environment variables file
 .env
+*.vsidx
+*.testlog
+/.vs/simplesamlphp/v17/TestStore/0/testlog.manifest
+*.wsuo
+*.sqlite
+/.vs/VSWorkspaceState.json
